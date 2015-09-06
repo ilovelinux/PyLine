@@ -27,9 +27,11 @@ def run():
             old_stdout = sys.stdout
             old_stderr = sys.stderr
             sys.stdout = sys.stderr = output
-            execute = console.push("{}".format(command))
-            sys.stdout = old_stdout
-            sys.stderr = old_stderr
+            try:
+                execute = console.push("{}".format(command))
+            finally:
+                sys.stdout = old_stdout
+                sys.stderr = old_stderr
             output = output.getvalue()
             if not prefix:
                 prefix = '>>> '
