@@ -28,7 +28,7 @@ def run():
             old_stderr = sys.stderr
             sys.stdout = sys.stderr = output
             try:
-                execute = console.push("{}".format(command))
+                execute = console.push(command)
             finally:
                 sys.stdout = old_stdout
                 sys.stderr = old_stderr
