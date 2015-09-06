@@ -44,17 +44,17 @@
         </style>
         <script src="{{ url_for('static', filename='scripts/jquery.js') }}"></script>
         <script type="text/javascript">
+            var cmd = [];
+            var number = 0;
+            var ip = "127.0.0.1";
+            var port = '5000';
 	        $(function() {
-	            var cmd = [];
-	            var number = 0;
 	            $("#interprete").keypress(function(e){
 	                if (e.keyCode == 13 || e.which == 13) {
 	                    var text = $('#interprete').val();
 	                    $('#interprete').val('');
 	                    cmd.push(text);
 	                    number = Math.max(cmd.length-1, 0);
-	                    var ip = "127.0.0.1";
-	                    var port = '5000';
                         if (text == 'source' || text == 'src') {
                             document.getElementById('output').innerHTML += '<div class="highlight"><span class="ow">Source: https://bitbucket.org/ilovelinux/pyline/</span></div>';
                         }
