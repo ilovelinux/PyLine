@@ -41,10 +41,10 @@ def run():
                 prefix = '... '
             else:
                 prefix = '>>> '
-            return jsonify(command = command,
-                           execute = output,
-                           prefix = prefix,
-                           code = code)
+            return jsonify(command=command,
+                           execute=output,
+                           prefix=prefix,
+                           code=code)
         if 'restore' in request.args.keys():
             if request.args['restore']:
                 console = code.InteractiveConsole()
