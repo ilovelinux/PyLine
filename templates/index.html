@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PyLine!</title>
+        <link href={{ url_for('static', filename='styles/pygments/monokai.css') }} rel="stylesheet" type="text/css"/>
+        <style>
+            body {
+                background-color: #404040;
+            }
+            #python {
+                background-color: #303030;
+                width: 80%;
+                margin: auto auto;
+            }
+            pre {
+                background-color: black;
+                display: table-cell;
+                white-space: pre-wrap;
+            }
+            #prefix {
+                background-color: black;
+            }
+            #output {
+                background-color: black;
+            }
+            #pyterprete {
+                background-color: black;
+                margin: auto auto;
+                width: 75%
+            }
+            #interprete {
+                width: 94%;
+                margin: auto auto;
+                background-color: transparent;
+                border: none;
+                color: #f8f8f2;
+            }
+            #help {
+                width: 75%;
+                margin: auto auto;
+                background-color: black;
+                color: #f8f8f8;
+            }
+        </style>
+        <script src="{{ url_for('static', filename='scripts/jquery.js') }}"></script>
+        <script type="text/javascript">
+	        $(function() {
+	            var cmd = [];
+	            var number = 0;
+	            $("#interprete").keypress(function(e){
+	                if (e.keyCode == 13 || e.which == 13) {
+	                    var text = $('#interprete').val();
+	                    $('#interprete').val('');
+	                    cmd.push(text);
+	                    number = Math.max(cmd.length-1, 0);
+	                    var ip = "127.0.0.1";
+	                    var port = '5000';
+                        if (text == 'source' || text == 'src') {
+                            document.getElementById('output').innerHTML += '<div class="highlight"><span class="ow">Source: https://bitbucket.org/ilovelinux/pyline/</span></div>';
+                        }
+                        else if (text == 'resetall') {
+	                        $.getJSON("http://"+ip+":"+port+"/exec/", {"restore":"True"}, function(json){
+	                            if (json.restored) {
+                                    cmd = [];
+                                    number = 0;
+                                    document.getElementById('output').innerHTML = '<div class="highlight"><span class="ow">Restored: ' + json.restored + '</span></div>';
+	                            }
+	                        });
+	                    }
+                        else if (text == 'about') {
+                            $.getJSON("http://"+ip+":"+port+"/exec/", {"exec":"sys.version.split()[0]"}, function(json){
+                                var version = json.execute.replace("'", "").replace("'", "");
+                                document.getElementById('output').innerHTML += '<div class="highlight"><span class="ow">Author: Antonio Spadaro < antoniospadaro45 AT gmail DOT com ><br>Source: https://bitbucket.org/ilovelinux/pyline/<br>Based on Python '+version+'</span></div>';
+                            });
+                        }
+	                    else {
+	                        $.getJSON("http://"+ip+":"+port+"/exec/", {'exec':text}, function(json){
+	                            document.getElementById('output').innerHTML = document.getElementById('output').innerHTML + json.code;
+	                            $('#prefix').text(json.prefix);
+	                        });
+	                    }
+	                }
+	            });
+	            $("#interprete").keydown(function(e){
+	                if (e.which == 38) {
+	                    $('#interprete').val(cmd[number]);
+                        console.log(number);
+	                    number = Math.max(number-1, 0);
+	                }
+	                if (e.which == 40) {
+	                    number = Math.min(number+1, cmd.length-1);
+                        console.log(number);
+	                    $('#interprete').val(cmd[number]);
+	                }
+	            });
+	        });
+        </script>
+    </head>
+    <body>
+        <div id="python">
+            <h1><center><font size="50">PyLine!</font></center></h1>
+            <div id="pyterprete" class="highlight">
+                <div id='output'></div>
+                <label for="interprete"><pre class="o" id='prefix'>&gt;&gt;&gt; </pre></label>
+                <input type="text" id='interprete'>
+            </div>
+            <div id="help">
+                <br>
+                <h2>Custom command</h2>
+                <ul>
+                    <li>source: <span>show the source of PyLine</span></li>
+                    <li>resetall: <span>reset python interprete</span></li>
+                    <li>about: <span>info about the author</span></li>
+                </ul>
+            </div>
+        </div>
+        <br>
+    </body>
+</html>
