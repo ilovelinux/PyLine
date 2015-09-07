@@ -36,7 +36,7 @@ def run():
             if not prefix:
                 prefix = '>>> '
             result = prefix + command + '\n' + output
-            code = highlight(result, PythonLexer(), HtmlFormatter())
+            html = highlight(result, PythonLexer(), HtmlFormatter())
             if execute:
                 prefix = '... '
             else:
@@ -44,7 +44,7 @@ def run():
             return jsonify(command=command,
                            execute=output,
                            prefix=prefix,
-                           code=code)
+                           code=html)
         if 'restore' in request.args.keys():
             if request.args['restore']:
                 console = code.InteractiveConsole()
