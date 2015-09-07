@@ -84,12 +84,10 @@
 	            $("#interprete").keydown(function(e){
 	                if (e.which == 38) {
 	                    $('#interprete').val(cmd[number]);
-                        console.log(number);
 	                    number = Math.max(number-1, 0);
 	                }
 	                if (e.which == 40) {
 	                    number = Math.min(number+1, cmd.length-1);
-                        console.log(number);
 	                    $('#interprete').val(cmd[number]);
 	                }
 	            });
