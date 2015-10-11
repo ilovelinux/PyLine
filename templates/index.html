@@ -3,45 +3,7 @@
     <head>
         <title>PyLine!</title>
         <link href={{ url_for('static', filename='styles/pygments/monokai.css') }} rel="stylesheet" type="text/css"/>
-        <style>
-            body {
-                background-color: #404040;
-            }
-            #python {
-                background-color: #303030;
-                width: 80%;
-                margin: auto auto;
-            }
-            pre {
-                background-color: black;
-                display: table-cell;
-                white-space: pre-wrap;
-            }
-            #prefix {
-                background-color: black;
-            }
-            #output {
-                background-color: black;
-            }
-            #pyterprete {
-                background-color: black;
-                margin: auto auto;
-                width: 75%
-            }
-            #interprete {
-                width: 94%;
-                margin: auto auto;
-                background-color: transparent;
-                border: none;
-                color: #f8f8f2;
-            }
-            #help {
-                width: 75%;
-                margin: auto auto;
-                background-color: black;
-                color: #f8f8f8;
-            }
-        </style>
+        <link href={{ url_for('static', filename='styles/main.css') }} rel="stylesheet" type="text/css"/>
         <script src="{{ url_for('static', filename='scripts/jquery.js') }}"></script>
         <script type="text/javascript">
             var cmd = [];
