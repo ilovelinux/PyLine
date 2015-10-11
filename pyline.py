@@ -45,7 +45,7 @@ def run():
                            execute=output,
                            prefix=prefix,
                            code=html)
-        if 'restore' in request.args.keys():
+        elif 'restore' in request.args.keys():
             if request.args['restore']:
                 console = code.InteractiveConsole()
                 return jsonify(restored=True)
