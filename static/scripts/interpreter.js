@@ -32,8 +32,7 @@ $(function() {
         else if (text == 'about') {
             $.getJSON("http://"+ip+":"+port+"/exec/", {"exec":"sys.version.split()[0]"}, function(json){
                 var version = json.execute.replace("'", "").replace("'", "");
-                write_output('<div class="highlight"><span class="ow">Author: Antonio Spadaro < antoniospadaro45 AT gmail DOT com ><br>Source: 
-https://bitbucket.org/ilovelinux/pyline/<br>Based on Python '+version+'</span></div>');
+                write_output('<div class="highlight"><span class="ow">Author: Antonio Spadaro < antoniospadaro45 AT gmail DOT com ><br>Source: https://bitbucket.org/ilovelinux/pyline/<br>Based on Python '+version+'</span></div>');
             });
         }
             else {
