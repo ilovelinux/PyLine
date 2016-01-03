@@ -5,6 +5,7 @@ body {
     background-color: #303030;
     width: 80%;
     margin: auto auto;
+    padding: 1px;
 }
 pre {
     background-color: black;
