@@ -1,7 +1,5 @@
 var cmd = [];
 var number = 0;
-var ip = "127.0.0.1";
-var port = '5000';
 function write_output(text, overwrite) {
     if (overwrite) {
         $('#output').html(text);
@@ -21,7 +19,7 @@ $(function() {
         write_output('<div class="highlight"><span class="ow">Source: https://bitbucket.org/ilovelinux/pyline/</span></div>');
         }
         else if (text == 'resetall') {
-                $.getJSON("http://"+ip+":"+port+"/exec/", {"restore":"True"}, function(json){
+                $.getJSON(document.location.origin+"/exec/", {"restore":"True"}, function(json){
                     if (json.restored) {
                     cmd = [];
                     number = 0;
@@ -30,13 +28,13 @@ $(function() {
                 });
             }
         else if (text == 'about') {
-            $.getJSON("http://"+ip+":"+port+"/exec/", {"exec":"sys.version.split()[0]"}, function(json){
+            $.getJSON(document.location.origin+"/exec/", {"exec":"sys.version.split()[0]"}, function(json){
                 var version = json.execute.replace("'", "").replace("'", "");
                 write_output('<div class="highlight"><span class="ow">Author: Antonio Spadaro < antoniospadaro45 AT gmail DOT com ><br>Source: https://bitbucket.org/ilovelinux/pyline/<br>Based on Python '+version+'</span></div>');
             });
         }
             else {
-                $.getJSON("http://"+ip+":"+port+"/exec/", {'exec':text}, function(json){
+                $.getJSON(document.location.origin+"/exec/", {'exec':text}, function(json){
                     write_output(json.code);
                     $('#prefix').text(json.prefix);
                 });
