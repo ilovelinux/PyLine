@@ -16,10 +16,7 @@ pre {
     display: table-cell;
     white-space: pre-wrap;
 }
-#prefix {
-    background-color: black;
-}
-#output {
+#prefix, #output {
     background-color: black;
 }
 #pyterprete {
