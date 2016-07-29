@@ -8,7 +8,7 @@ h1#title {
 #python {
     background-color: #303030;
     width: 80%;
-    margin: auto auto;
+    margin: auto;
     padding: 1px;
 }
 pre {
@@ -24,19 +24,19 @@ pre {
 }
 #pyterprete {
     background-color: black;
-    margin: auto auto;
+    margin: auto;
     width: 75%
 }
 #interprete {
     width: 94%;
-    margin: auto auto;
+    margin: auto;
     background-color: transparent;
     border: none;
     color: #f8f8f2;
 }
 #help {
     width: 75%;
-    margin: auto auto;
+    margin: auto;
     background-color: black;
     color: #f8f8f8;
 }
