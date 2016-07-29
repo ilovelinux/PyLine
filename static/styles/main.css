@@ -9,7 +9,7 @@ h1#title {
     background-color: #303030;
     width: 80%;
     margin: auto;
-    padding: 1px;
+    padding: 0.2rem;
 }
 pre {
     background-color: black;
