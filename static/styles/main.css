@@ -1,6 +1,10 @@
 body {
     background-color: #404040;
 }
+h1#title {
+    text-align: center;
+    font-size: 3rem;
+}
 #python {
     background-color: #303030;
     width: 80%;
