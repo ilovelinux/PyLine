@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>PyLine!</title>
-        <link href={{ url_for('static', filename='styles/pygments/monokai.css') }} rel="stylesheet" type="text/css"/>
-        <link href={{ url_for('static', filename='styles/main.css') }} rel="stylesheet" type="text/css"/>
-        <script src="{{ url_for('static', filename='scripts/jquery.js') }}"></script>
-        <script src="{{ url_for('static', filename='scripts/interpreter.js') }}"></script>
-    </head>
-    <body>
-        <div id="python">
-            <h1><center><font size="50">PyLine!</font></center></h1>
-            <div id="pyterprete" class="highlight">
-                <div id='output'></div>
-                <label for="interprete"><pre class="o" id='prefix'>&gt;&gt;&gt; </pre></label>
-                <input type="text" id='interprete'>
-            </div>
-            <div id="help">
-                <br>
-                <h2>Custom command</h2>
-                <ul>
-                    <li>source: <span>show the source of PyLine</span></li>
-                    <li>resetall: <span>reset python interprete</span></li>
-                    <li>about: <span>info about the author</span></li>
-                </ul>
-            </div>
+
+<head>
+    <title>PyLine!</title>
+    <link href="{{ url_for('static', filename='styles/pygments/monokai.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='styles/main.css') }}" rel="stylesheet" type="text/css" />
+    <script src="{{ url_for('static', filename='scripts/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/interpreter.js') }}"></script>
+</head>
+
+<body>
+    <div id="python">
+        <h1><center><font size="50">PyLine!</font></center></h1>
+        <div id="pyterprete" class="highlight">
+            <div id="output"></div>
+            <label for="interprete"><pre class="o" id="prefix">&gt;&gt;&gt; </pre></label>
+            <input type="text" id="interprete">
         </div>
-        <br>
-    </body>
+        <div id="help">
+            <br>
+            <h2>Custom command</h2>
+            <ul>
+                <li>source: <span>show the source of PyLine</span></li>
+                <li>resetall: <span>reset python interprete</span></li>
+                <li>about: <span>info about the author</span></li>
+            </ul>
+        </div>
+    </div>
+    <br>
+</body>
+
 </html>
