@@ -17,11 +17,10 @@ pre#prefix {
     display: table-cell;
     white-space: pre-wrap;
 }
-pre#prefix, div#output {
+pre#prefix, div#output, div#pyterprete {
     background-color: black;
 }
 div#pyterprete {
-    background-color: black;
     margin: auto;
     width: 75%
 }
