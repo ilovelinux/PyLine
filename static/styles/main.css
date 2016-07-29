@@ -5,7 +5,7 @@ h1#title {
     text-align: center;
     font-size: 3rem;
 }
-#python {
+div#python {
     background-color: #303030;
     width: 80%;
     margin: auto;
@@ -13,27 +13,27 @@ h1#title {
     display: flex;
     flex-direction: column;
 }
-pre {
+pre#prefix {
     background-color: black;
     display: table-cell;
     white-space: pre-wrap;
 }
-#prefix, #output {
+pre#prefix, div#output {
     background-color: black;
 }
-#pyterprete {
+div#pyterprete {
     background-color: black;
     margin: auto;
     width: 75%
 }
-#interprete {
+input#interprete {
     width: 94%;
     margin: auto;
     background-color: transparent;
     border: none;
     color: #f8f8f2;
 }
-#help {
+div#help {
     width: 75%;
     margin: auto;
     background-color: black;
