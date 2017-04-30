@@ -17,42 +17,41 @@ def home():
 
 @app.route('/exec/')
 def run():
-    if request.args:
-        if 'exec' in request.args.keys():
-            global prefix
-            global console
-            command = request.args['exec']
-            print(command)
-            output = io.StringIO()
-            old_stdout = sys.stdout
-            old_stderr = sys.stderr
-            sys.stdout = sys.stderr = output
-            try:
-                execute = console.push(command)
-            finally:
-                sys.stdout = old_stdout
-                sys.stderr = old_stderr
-            output = output.getvalue()
-            if not prefix:
-                prefix = '>>> '
-            result = prefix + command + '\n' + output
-            html = highlight(result, PythonLexer(), HtmlFormatter())
-            if execute:
-                prefix = '... '
-            else:
-                prefix = '>>> '
-            return jsonify(command=command,
-                           execute=output,
-                           prefix=prefix,
-                           code=html)
-        elif 'restore' in request.args.keys():
-            if request.args['restore']:
-                console = code.InteractiveConsole()
-                return jsonify(restored=True)
-            else:
-                return jsonify(restored=False)
+    if not request.args:
+        return jsonify(error=True)
+    if 'exec' in request.args.keys():
+        global prefix
+        global console
+        command = request.args['exec']
+        print(command)
+        output = io.StringIO()
+        old_stdout = sys.stdout
+        old_stderr = sys.stderr
+        sys.stdout = sys.stderr = output
+        try:
+            execute = console.push(command)
+        finally:
+            sys.stdout = old_stdout
+            sys.stderr = old_stderr
+        output = output.getvalue()
+        if not prefix:
+            prefix = '>>> '
+        result = prefix + command + '\n' + output
+        html = highlight(result, PythonLexer(), HtmlFormatter())
+        if execute:
+            prefix = '... '
         else:
-            return jsonify(error=True)
+            prefix = '>>> '
+        return jsonify(command=command,
+                       execute=output,
+                       prefix=prefix,
+                       code=html)
+    elif 'restore' in request.args.keys():
+        if request.args['restore']:
+            console = code.InteractiveConsole()
+            return jsonify(restored=True)
+        else:
+            return jsonify(restored=False)
     else:
         return jsonify(error=True)
 
